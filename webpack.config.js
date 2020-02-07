@@ -1,46 +1,48 @@
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+const { resolve } = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+const { resolveTsAliases } = require("resolve-ts-aliases");
 
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === "production";
 
 const config = {
-  mode: isProd ? 'production' : 'development',
+  mode: isProd ? "production" : "development",
   entry: {
-    index: './src/index.tsx',
+    index: "./src/index.tsx"
   },
   output: {
-    path: resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    path: resolve(__dirname, "dist"),
+    filename: "[name].js"
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    alias: resolveTsAliases(__dirname+"/tsconfig.json"),
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
+        use: "babel-loader",
+        exclude: /node_modules/
       },
-    ],
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Babel + TypeScript + React = ❤️',
-      template: 'src/index.html',
-    }),
-  ],
+      template: "src/index.html"
+    })
+  ]
 };
 
 if (isProd) {
   config.optimization = {
-    minimizer: [
-      new TerserWebpackPlugin(),
-    ],
+    minimizer: [new TerserWebpackPlugin()]
   };
 } else {
-  // for more information, see https://webpack.js.org/configuration/dev-server
   config.devServer = {
     port: 8080,
     open: true,
@@ -48,6 +50,7 @@ if (isProd) {
     compress: true,
     stats: 'errors-only',
     overlay: true,
+    historyApiFallback: true,
   };
 }
 

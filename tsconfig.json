@@ -9,7 +9,11 @@
     "allowJs": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+        "@components/*": ["src/components/*"]
+    }
   },
   "include": [
     "src"
