@@ -1,9 +1,11 @@
-const { resolve } = require("path");
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const { resolveTsAliases } = require("resolve-ts-aliases");
 
 const isProd = process.env.NODE_ENV === "production";
+
+console.log({ e: process.env.NODE_ENV, __dirname });
 
 const config = {
   mode: isProd ? "production" : "development",
@@ -11,12 +13,12 @@ const config = {
     index: "./src/index.tsx"
   },
   output: {
-    path: resolve(__dirname, "dist"),
+    path: `${__dirname}/dist`,
     filename: "[name].js"
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
-    alias: resolveTsAliases(__dirname+"/tsconfig.json"),
+    alias: resolveTsAliases(__dirname + "/tsconfig.json")
   },
   module: {
     rules: [
@@ -34,6 +36,9 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.html"
+    }),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
     })
   ]
 };
@@ -48,9 +53,9 @@ if (isProd) {
     open: true,
     hot: true,
     compress: true,
-    stats: 'errors-only',
+    stats: "errors-only",
     overlay: true,
-    historyApiFallback: true,
+    historyApiFallback: true
   };
 }
 

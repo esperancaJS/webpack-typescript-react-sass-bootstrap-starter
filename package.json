@@ -4,7 +4,9 @@
     "start": "npm run serve:dev",
     "build": "cross-env NODE_ENV=production webpack --color --progress",
     "serve:dist": "serve dist",
-    "serve:dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress"
+    "serve:dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress",
+    "serve:staging": "cross-env NODE_ENV=staging webpack-dev-server --color --progress",
+    "serve:production": "cross-env NODE_ENV=production webpack-dev-server --color --progress"
   },
   "dependencies": {
     "@loadable/component": "^5.12.0",
