@@ -14,6 +14,7 @@ const config = {
   },
   output: {
     path: `${__dirname}/dist`,
+    publicPath: '/',
     filename: "[name].js"
   },
   resolve: {
