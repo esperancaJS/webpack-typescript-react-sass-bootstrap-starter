@@ -1,11 +1,11 @@
 ---
-to: <%=cwd %>/<%= h.changeCase.pascal(name) %>/<%= h.changeCase.pascal(name) %>.component.js
+to: <%=cwd %>/<%= h.changeCase.pascal(name) %>/<%= h.changeCase.pascal(name) %>.component.tsx
 ---
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
 import './style.sass';
 
-export default function <%= h.changeCase.pascal(name) %>() {
+export const <%= h.changeCase.pascal(name) %>: FunctionComponent<{}> = ({}) => {
     return (
         <>
             <p><%= name %></p>
