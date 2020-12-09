@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@loadable/component": "^5.12.0",
-    "bootstrap": "^4.4.1",
+    "@svgr/webpack": "^5.5.0",
+    "bootstrap": "^4.5.3",
+    "file-loader": "^6.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2"

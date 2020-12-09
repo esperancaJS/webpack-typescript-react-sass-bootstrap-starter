@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import loadable from '@loadable/component';
 
+import twitterIcon from '@assets/twitter.svg';
+
 export default function App() {
     return (
         <div className='container'>
@@ -33,6 +35,13 @@ export default function App() {
                             <Route path="/Page2" component={loadable(() => import('./components/Routes/Page2'))} />
                         </Switch>
                     </Router>
+
+                    <hr />
+
+                    <a className="twitter-btn btn btn-sm" href="https://twitter.com/intent/tweet?text=@esperancaJs+halp">
+                        <img className="img-fluid" src={twitterIcon} />
+                        Any questions?
+                    </a>
                 </div>
             </div>
         </div>
