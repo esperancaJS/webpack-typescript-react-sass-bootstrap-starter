@@ -1,49 +1,35 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Redirect
 } from 'react-router-dom';
 import loadable from '@loadable/component';
-
-import twitterIcon from '@assets/twitter.svg';
+import SideMenu from "@shared/SideMenu";
 
 export default function App() {
+
+    const themeFromParams = (q =>
+        q.get('theme') || '3'
+    )(new URLSearchParams(window.location.search));
+
     return (
-        <div className='container'>
-            <div className='row'>
-                <div className='col-12'>
-                    <p>Webpack + TypeScript + React + SASS + Bootstrap = ❤️</p>
-
-                    <hr />
-
-                    <Router>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/Page1">Page1 - Env</Link>
-                                </li>
-                                <li>
-                                    <Link to="/Page2">Page2 - Counter</Link>
-                                </li>
-                            </ul>
-                        </nav>
-
-                        <Switch>
-                            <Route path="/Page1" component={loadable(() => import('./components/Routes/Page1'))} />
-                            <Route path="/Page2" component={loadable(() => import('./components/Routes/Page2'))} />
-                        </Switch>
-                    </Router>
-
-                    <hr />
-
-                    <a className="twitter-btn btn btn-sm" href="https://twitter.com/intent/tweet?text=@esperancaJs+halp">
-                        <img className="img-fluid" src={twitterIcon} />
-                        Any questions?
-                    </a>
+        <div className={`AppContainer theme${themeFromParams}`}>
+            <Router>
+                <SideMenu />
+                <div className="App border-sides">
+                    <Switch>
+                        <Route path="/Vote_v1" component={loadable(() => import('./components/Routes/Vote_v1'))} />
+                        <Route path="/register" component={loadable(() => import('./components/Routes/CreateProfile'))} />
+                        <Route path="/create-vote" component={loadable(() => import('./components/Routes/CreateVote'))} />
+                        <Route path="/profile" component={loadable(() => import('./components/Routes/Profile'))} />
+                        <Route path="/feed" component={loadable(() => import('./components/Routes/Feed'))} />
+                        <Route path="/home" component={loadable(() => import('./components/Routes/Home'))} />
+                        <Redirect from="/" to="/Vote_v1" />
+                    </Switch>
                 </div>
-            </div>
+            </Router>
         </div>
     );
 }

@@ -14,7 +14,9 @@
     "paths": {
         "@env": ["environments/index"],
         "@components/*": ["src/components/*"],
-        "@assets/*": ["src/assets/*"]
+        "@assets/*": ["src/assets/*"],
+        "@shared/*": ["src/components/shared/*"],
+        "@state/*": ["src/state/*"]
     }
   },
   "include": [
