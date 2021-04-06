@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import TextareaAutosize from 'react-textarea-autosize';
+import { useParams } from 'react-router-dom';
 
 import BackArrowSVG from "@shared/Icons/BackArrow.svg";
 import Header from "@shared/Header";
@@ -9,18 +10,32 @@ import VoteGraph1 from "@shared/VoteGraph1";
 import "./style.sass";
 
 const startTextOptions = [
-    "Do you approve of",
-    "Do you believe in",
-    "Do you like",
-    "Do you want"
+    "approve of",
+    "believe in",
+    "like",
+    "want"
+];
+
+const textJoinOptions = [
+    "for",
+    "among",
+    "across",
+    "including",
+    "excluding",
 ];
 
 export default function CreateVote() {
+
+    let { voteName } = useParams();
+
+    console.log({ voteName });
+
     const { handleSubmit, register, setValue, watch } = useForm({
         mode: "onChange",
         reValidateMode: "onChange",
         defaultValues: {
             startText: startTextOptions[0],
+            textJoin: textJoinOptions[0],
             voteText: ""
         }
     });
@@ -39,16 +54,46 @@ export default function CreateVote() {
         );
     };
 
+    const setNextTextJoin = () => {
+        const index = textJoinOptions.indexOf(watchAllFields.textJoin);
+        const optionsLength = textJoinOptions.length;
+
+        setValue(
+            "textJoin",
+            textJoinOptions[optionsLength === index + 1 ? 0 : index + 1]
+        );
+    };
+
     return (
         <>
-            <Header title="Launch Poll" />
+            <Header title="Launch Opinion Poll" />
             <form className="voteForm" onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    {...register("startText", {
-                        required: "Required"
-                    })}
-                    onClick={() => setNextStartText()}
-                />
+                <div className="d-flex">
+                    <h2 className="mb-0 mr-1 textAndInputWrapper">
+                        Do you
+                    </h2>
+                    <input
+                        {...register("startText", {
+                            required: "Required"
+                        })}
+                        onClick={() => setNextStartText()}
+                    />
+                </div>
+                {voteName && (
+                    <div className="d-flex">
+                        <h2 className="mb-0 mr-1 textAndInputWrapper">
+                            <b>
+                                {voteName}
+                            </b>
+                        </h2>
+                        <input
+                            {...register("textJoin", {
+                                required: "Required"
+                            })}
+                            onClick={() => setNextTextJoin()}
+                        />
+                    </div>
+                )}
                 <TextareaAutosize
                     autoFocus
                     name="voteText"

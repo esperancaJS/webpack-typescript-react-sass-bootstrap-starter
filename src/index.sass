@@ -33,14 +33,24 @@ $theme5-colors: ("bg": #0b414d, "primary": #08f3a5, "secondary": white, "border"
         border-right: 1px solid map-get($theme, "border")
 
     .for
+        fill: adjust-color(map-get($theme, "for"), $alpha: -0.2)
+
+    .forDirect
         fill: map-get($theme, "for")
 
     .against
+        fill: adjust-color(map-get($theme, "against"), $alpha: -0.2)
+
+    .againstDirect
         fill: map-get($theme, "against")
 
     .icon, .icon-large, .icon-small
         *
             fill: map-get($theme, "primary")
+
+        .primary-stroke
+            stroke: map-get($theme, "primary")
+            fill: none
 
     .svgText
         fill: map-get($theme, "secondary")
@@ -68,6 +78,9 @@ $theme5-colors: ("bg": #0b414d, "primary": #08f3a5, "secondary": white, "border"
             svg, path
                 fill: map-get($theme, "bg")
 
+                .primary-stroke
+                    stroke: map-get($theme, "bg")
+
             &.selected
                 border: 1px solid map-get($theme, "primary")
 
@@ -75,7 +88,9 @@ $theme5-colors: ("bg": #0b414d, "primary": #08f3a5, "secondary": white, "border"
         circle
             stroke: map-get($theme, "primary")
 
-        text
+    .badge
+        background: map-get($theme, "primary")
+        color: map-get($theme, "bg")
 
 .theme1
     @include theme($theme1-colors)
@@ -116,6 +131,11 @@ a
     color: inherit
     background: inherit
 
+    &.small
+        font-size: 12px
+        padding: 3px 9px
+        margin-bottom: 9px
+
     &.icon-contain
         padding: 6px 10px
 
@@ -140,10 +160,6 @@ h1
 
 h3
     margin: 12px 0 6px
-    cursor: pointer
-
-    &:hover
-        text-decoration: underline
 
 hr
     margin: 0px -15px 15px
@@ -154,12 +170,34 @@ hr
 .bar-container
     display: flex
     margin: -2px
+    flex-wrap: wrap
 
-.bar-wrapper
+.bar-container-horizontal
+    display: flex
+    margin: -2px
+    flex-wrap: wrap
+    flex-direction: column
+
+    .do-you
+        opacity: 0.7
+        margin: 2px
+
+.bar-wrapper, .bar-wrapper-horizontal
     border-radius: 6px
     width: 100%
     overflow: hidden
     margin: 0 2px
+    transition: all 0.3s ease
+
+    &.bar-wrapper-horizontal
+        max-height: 55px
+
+        &:hover
+            max-height: 90px
+            width: 100% !important
+
+    &:hover
+        flex: 6 !important
 
 .for
     fill: #065343
@@ -182,6 +220,18 @@ hr
 
     .icon-small
         margin-bottom: 20px
+
+.sideInfo
+    display: flex
+    width: 170px
+    flex-direction: column
+    padding: 60px 0px 0 15px
+    margin-right: -50px
+    font-size: 14px
+    line-height: 15px
+
+    > *
+        margin-bottom: 10px
 
 .icon
     width: 27px

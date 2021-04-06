@@ -5,59 +5,15 @@ import LinkSVG from "@shared/Icons/Link.svg";
 import CalendarSVG from "@shared/Icons/Calendar.svg";
 import LocationSVG from "@shared/Icons/Location.svg";
 import AddNotificationSVG from "@shared/Icons/AddNotification.svg";
+import DropSVG from "@shared/Icons/Drop.svg";
 import Header from "@shared/Header";
 import VoteGraph1 from "@shared/VoteGraph1";
+import { profileVotes } from "@state/Mock/Votes";
 
 import './style.sass';
 
 export default function Profile() {
     const [isRepresenting, setIsRepresenting] = React.useState(false);
-
-    const defaults = {
-        name: null,
-        flexSize: 1,
-        forPercentage: 70,
-        userVote: true,
-        userDelegatedVotes: null
-    };
-
-    const byApprovalOnOtherTopics = [
-        {
-            ...defaults,
-            name: "Equality",
-            flexSize: 7,
-            forPercentage: 70
-            // forPercentageOnOther: 90
-        },
-        {
-            ...defaults,
-            name: "BLM",
-            flexSize: 5,
-            forPercentage: 60
-            // forPercentageOnOther: 50
-        },
-        {
-            ...defaults,
-            name: "LGBT Rights",
-            forPercentage: 90,
-            flexSize: 3
-            // forPercentageOnOther: 40
-        },
-        {
-            ...defaults,
-            name: "Libertarianism",
-            forPercentage: 40,
-            flexSize: 1,
-            userVote: false
-        },
-        {
-            ...defaults,
-            name: "Mercantilism",
-            forPercentage: 30,
-            flexSize: 1,
-            userVote: false
-        }
-    ];
 
     return (
         <>
@@ -71,14 +27,17 @@ export default function Profile() {
                 <div className="cover" />
                 <div className="profile-avatar bg"></div>
                 <div className="profile-buttons-container">
-                    <div className="button_">
+                    {/* <div className="button_">
                         <AddNotificationSVG />
-                    </div>
+                    </div> */}
                     <div
                         onClick={() => setIsRepresenting(!isRepresenting)}
                         className={`button_ ${isRepresenting ? "selected" : ""}`}
                     >
-                        {isRepresenting ? "Represents You" : "Delegate Opinions To"}
+                        {isRepresenting ? "Represents You" : "Delegate Votes To"}
+                        <span className="ml-2 mr-1 mt-n2"> 
+                            <DropSVG />
+                        </span>
                     </div>
                 </div>
             </div>
@@ -119,8 +78,12 @@ export default function Profile() {
                 </div>
             </div>
 
+            <hr />
+
+            <h3>Dan's Opinions</h3>
+
             <div>
-                {byApprovalOnOtherTopics.map((l, i) => (
+                {profileVotes.map((l, i) => (
                     <>
                         <br />
                         <div className="bar-container">

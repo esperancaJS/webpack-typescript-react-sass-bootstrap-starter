@@ -1,3 +1,18 @@
 .chart1
     height: 65px
     border-radius: 6px
+    
+    .directCount
+        opacity: 0
+        transition: opacity 0.3s ease
+
+    &.main, &:hover
+        .directCount
+            opacity: 1
+
+    .avatar
+        transition: cy 0.3s
+
+    &:hover
+        .avatar
+            cy: 22px

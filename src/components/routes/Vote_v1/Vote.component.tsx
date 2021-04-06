@@ -1,226 +1,44 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
+import { DiscussionEmbed } from 'disqus-react';
 
 import VoteGraph1 from "@shared/VoteGraph1";
 import Header from "@shared/Header";
-import BackArrowSVG from "@shared/Icons/BackArrow.svg";
-import { DiscussionEmbed } from 'disqus-react';
+import DropPlusSVG from "@shared/Icons/Drop+.svg";
+import {
+    defaults,
+    byLocation,
+    byAge,
+    byOccupation,
+    byApprovalOnOtherTopics,
+    votesBy,
+    onSubTopics
+} from "@state/Mock/Votes";
+
+import SubVote from './SubVote';
 
 export default function Vote() {
-    const defaults = {
-        name: null,
-        flexSize: 1,
-        forCount: 0,
-        againstCount: 0,
-        userVote: null,
-        userDelegatedVotes: null
-    };
 
-    const byLocation = [
-        {
-            ...defaults,
-            name: "Lisbon",
-            flexSize: 5,
-            // forPercentage: 60
-        },
-        {
-            ...defaults,
-            name: "London",
-            flexSize: 4,
-            // forPercentage: 90,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "Other",
-            // forPercentage: 50,
-            flexSize: 1,
-            userVote: null
-        }
-    ];
-
-    const byAge = [
-        {
-            ...defaults,
-            name: "10-18",
-            flexSize: 3,
-            // forPercentage: 90
-        },
-        {
-            ...defaults,
-            name: "19-25",
-            flexSize: 4,
-            // forPercentage: 80,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "26-35",
-            // forPercentage: 70,
-            flexSize: 3,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "36-50",
-            // forPercentage: 60,
-            flexSize: 3,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "Other",
-            // forPercentage: 50,
-            flexSize: 1,
-            userVote: null
-        }
-    ];
-
-    const byOccupation = [
-        {
-            ...defaults,
-            name: "Student",
-            flexSize: 5,
-            // forPercentage: 90
-        },
-        {
-            ...defaults,
-            name: "Sales",
-            flexSize: 4,
-            // forPercentage: 50,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "Doctor",
-            flexSize: 3,
-            // forPercentage: 70,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "IT",
-            flexSize: 3,
-            // forPercentage: 90,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "Lobbyist",
-            flexSize: 2,
-            // forPercentage: 20,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "Other",
-            // forPercentage: 50,
-            flexSize: 1,
-            userVote: null
-        }
-    ];
-
-    const byApprovalOnOtherTopics = [
-        {
-            ...defaults,
-            name: "Equality",
-            flexSize: 7,
-            // forPercentage: 70,
-            // forPercentageOnOther: 90,
-            userVote: true
-        },
-        {
-            ...defaults,
-            name: "BLM",
-            flexSize: 5,
-            // forPercentage: 60,
-            // forPercentageOnOther: 50,
-            userVote: true
-        },
-        {
-            ...defaults,
-            name: "LGBT Rights",
-            // forPercentage: 90,
-            flexSize: 3,
-            // forPercentageOnOther: 40,
-            userVote: true
-        },
-        {
-            ...defaults,
-            name: "Other",
-            // forPercentage: 50,
-            flexSize: 1
-        }
-    ];
-
-    const votesBy = [
-        {
-            ...defaults,
-            name: "Direct",
-            // forPercentage: 70,
-            flexSize: 12,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "Joe Bidden",
-            flexSize: 7,
-            // forPercentage: 100,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "Trump",
-            flexSize: 4,
-            // forPercentage: 0,
-            userVote: null
-        },
-        {
-            ...defaults,
-            name: "Bonno",
-            // forPercentage: 100,
-            flexSize: 3,
-            userVote: null
-        }
-    ];
-
-    const onSubTopics = [
-        {
-            ...defaults,
-            name: "Equal Rights Amoung Genders",
-            flexSize: 8,
-            // forPercentage: 90,
-            // forPercentageOnOther: 70,
-            userVote: true
-        },
-        {
-            ...defaults,
-            name: "Equal Rights accross all Ages",
-            flexSize: 4,
-            // forPercentage: 60,
-            // forPercentageOnOther: 50,
-            userVote: true
-        },
-        {
-            ...defaults,
-            name: "Other",
-            // forPercentage: 80,
-            flexSize: 1
-        }
-    ];
+    const [userVote, setUserVote] = React.useState(null);
 
     const openStats = (for_: any) => {
         alert(`TODO: open stats for ${for_}`);
     };
 
+    const handleUserVote = (vote: string) => {
+        if (vote === userVote) {
+            setUserVote(null)
+        } else {
+            setUserVote(vote);
+        }
+    }
+
     return (
         <>
-            <Header title="Poll" />
+            <Header title="Opinion Poll" />
 
-            <h1>
-                Do you approve of
-                <br />
-                <b>Equal Rights</b>?
-            </h1>
+            <h2 className="mb-0 mt-4">Do you approve of</h2>
+            <h2 className="mb-4"><b>Equal Rights</b></h2>
 
             <div>
                 {/* <h4 onClick={() => openStats("Vote")}>Opinions</h4> */}
@@ -230,14 +48,14 @@ export default function Vote() {
 
                 <div className="d-flex d-flex justify-content-between mt-4">
                     <div
-                        onClick={() => {}}
-                        className="button_"
+                        onClick={() => handleUserVote('for')}
+                        className={`button_ ${userVote === 'for' && 'selected'}`}
                     >
                         Vote For
                     </div>
                     <div
-                        onClick={() => {}}
-                        className="button_"
+                        onClick={() => handleUserVote('against')}
+                        className={`button_ ${userVote === 'against' && 'selected'}`}
                     >
                         Vote Against
                     </div>
@@ -248,7 +66,7 @@ export default function Vote() {
                 <h2>Statistics</h2>
 
                 <br />
-                <h4 onClick={() => openStats("Location")}>By Location</h4>
+                <h4 onClick={() => openStats("Location")}>Locations</h4>
                 <div className="bar-container">
                     {byLocation.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
@@ -258,7 +76,7 @@ export default function Vote() {
                 </div>
 
                 <br />
-                <h4 onClick={() => openStats("Location")}>By Age</h4>
+                <h4 onClick={() => openStats("Location")}>Age Groups</h4>
                 <div className="bar-container">
                     {byAge.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
@@ -268,7 +86,7 @@ export default function Vote() {
                 </div>
 
                 <br />
-                <h4 onClick={() => openStats("Location")}>By Occupation</h4>
+                <h4 onClick={() => openStats("Location")}>Occupations</h4>
                 <div className="bar-container">
                     {byOccupation.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
@@ -279,7 +97,7 @@ export default function Vote() {
 
                 <br />
                 <h4 onClick={() => openStats("Approval on other topics")}>
-                    By approval on other topics
+                    Correlations with other Votes
                 </h4>
                 <div className="bar-container">
                     {byApprovalOnOtherTopics.map((l, i) => (
@@ -290,7 +108,7 @@ export default function Vote() {
                 </div>
 
                 <br />
-                <h4 onClick={() => openStats("Votes By")}>Votes by</h4>
+                <h4 onClick={() => openStats("Votes By")}>Voters</h4>
                 <div className="bar-container">
                     {votesBy.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
@@ -300,15 +118,20 @@ export default function Vote() {
                 </div>
 
                 <br />
-                <h4 onClick={() => openStats("Votes on sub topics")}>
-                    Votes on sub topics
-                </h4>
-                <div className="bar-container">
+                <hr />
+                <h2>Votes on sub topics</h2>
+                <div className="bar-container-horizontal">
                     {onSubTopics.map((l, i) => (
-                        <div className="bar-wrapper" style={{ flex: l.flexSize }}>
-                            <VoteGraph1 key={`d-${i}`} {...l} />
-                        </div>
+                        <SubVote
+                            l={l}
+                            i={i}
+                        />
                     ))}
+                    <div className="d-flex justify-content-center mt-3">
+                        <Link to="/create-sub-vote/Equal Rights" className="button_ icon-contain inverted">
+                            <DropPlusSVG />
+                        </Link>
+                    </div>
                 </div>
             </div>
 

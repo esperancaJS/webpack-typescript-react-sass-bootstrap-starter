@@ -3,15 +3,19 @@ import numeral from 'numeral';
 
 export default function Chart({
     name,
+    forDirectCount,
     forCount,
+    againstDirectCount,
     againstCount,
     userVote = null,
     userDelegatedVotes = null
 }: {
-    name: string | null;
+    name: string | null,
+    forDirectCount: number
     forCount: number,
+    againstDirectCount: number
     againstCount: number,
-    userVote: boolean | null;
+    userVote: boolean | null,
     userDelegatedVotes:
     | [
         {
@@ -30,9 +34,12 @@ export default function Chart({
     };
 
     const forPercentage = (forCount / (forCount + againstCount)) * 100 || 50;
+    const forDirectPercentage = (forDirectCount / (forCount + againstCount)) * 100 || 50;
+    const againstPercentage = 100 - forPercentage;
+    const againstDirectPercentage = (againstDirectCount / (forCount + againstCount)) * 100 || 50;
 
     return (
-        <svg className="chart1" width="100%" height="100%">
+        <svg className={`chart1 ${name === null && 'main'}`} width="100%" height="100%">
             <defs>
                 <pattern
                     id="image"
@@ -58,12 +65,23 @@ export default function Chart({
                 x="0%"
                 width={forPercentage + "%"}
                 height="100%"
-                fill="green"
+            />
+            <rect
+                className="forDirect"
+                x="0%"
+                width={forDirectPercentage + "%"}
+                height="100%"
             />
             <rect
                 className="against"
                 x={forPercentage + "%"}
-                width={100 - forPercentage + "%"}
+                width={againstPercentage + "%"}
+                height="100%"
+            />
+            <rect
+                className="againstDirect"
+                x={forPercentage + "%"}
+                width={againstDirectPercentage + "%"}
                 height="100%"
             />
 
@@ -89,20 +107,22 @@ export default function Chart({
             {userVote !== null && (
                 <>
                     {userVote ? (
-                        <svg x="0" y="25">
+                        <svg x="0" y="0">
                             <circle
+                                className="avatar"
                                 cx="20"
-                                cy="20"
+                                cy="16"
                                 r="13"
                                 fill="url(#image)"
                                 strokeWidth="2"
                             />
                         </svg>
                     ) : (
-                        <svg x={100 + "%"} y="25" style={{ overflow: "visible" }}>
+                        <svg x={100 + "%"} y="0" style={{ overflow: "visible" }}>
                             <circle
+                                className="avatar"
                                 cx="-20"
-                                cy="20"
+                                cy="16"
                                 r="13"
                                 fill="url(#image)"
                                 strokeWidth="2"
@@ -151,16 +171,6 @@ export default function Chart({
             )}
 
             {/* Count texts */}
-            <svg x={forPercentage + "%"} y="60%">
-                <text
-                    y="20"
-                    x="5"
-                    className="svgText small"
-                    onClick={() => voteOn("against")}
-                >
-                    {numeral(againstCount).format('0a')}
-                </text>
-            </svg>
             <svg
                 x={forPercentage + "%"}
                 y="60%"
@@ -168,14 +178,43 @@ export default function Chart({
             >
                 <text
                     y="20"
-                    x={-6 - (`${numeral(forCount).format('0a')}`.length * 5.19)} //5.19
+                    x={-6 - (`${numeral(forCount).format('0a')}`.length * 5.19)} //5.19 - avg char length
                     className="svgText small"
-                    onClick={() => voteOn("against")}
                 >
                     {numeral(forCount).format('0a')}
                 </text>
             </svg>
-
+            <svg
+                x={forDirectPercentage + "%"}
+                y="60%"
+                style={{ overflow: 'visible' }}
+            >
+                <text
+                    y="20"
+                    x={-6 - (`${numeral(forDirectCount).format('0a')}`.length * 5.19)} //5.19 - avg char length
+                    className="svgText small directCount"
+                >
+                    {numeral(forDirectCount).format('0a')}
+                </text>
+            </svg>
+            <svg x={forPercentage + "%"} y="60%">
+                <text
+                    y="20"
+                    x="5"
+                    className="svgText small"
+                >
+                    {numeral(againstCount).format('0a')}
+                </text>
+            </svg>
+            <svg x={forPercentage + againstDirectPercentage + "%"} y="60%">
+                <text
+                    y="20"
+                    x="5"
+                    className="svgText small directCount"
+                >
+                    {numeral(againstDirectCount).format('0a')}
+                </text>
+            </svg>
         </svg>
     );
 }
