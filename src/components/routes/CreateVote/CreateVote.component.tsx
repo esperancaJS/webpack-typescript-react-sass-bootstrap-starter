@@ -28,8 +28,6 @@ export default function CreateVote() {
 
     let { voteName } = useParams();
 
-    console.log({ voteName });
-
     const { handleSubmit, register, setValue, watch } = useForm({
         mode: "onChange",
         reValidateMode: "onChange",

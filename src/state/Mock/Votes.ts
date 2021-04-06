@@ -198,7 +198,6 @@ export const onSubTopics = [
         flexSize: 4,
         // forPercentage: 60,
         // forPercentageOnOther: 50,
-        userVote: true
     },
     {
         ...defaults,
@@ -206,7 +205,6 @@ export const onSubTopics = [
         flexSize: 4,
         // forPercentage: 60,
         // forPercentageOnOther: 50,
-        userVote: true
     },
     {
         ...defaults,
@@ -222,7 +220,6 @@ export const onSubTopics = [
         flexSize: 4,
         // forPercentage: 60,
         // forPercentageOnOther: 50,
-        userVote: true
     }
 ];
 
@@ -324,4 +321,29 @@ export const feedNotificationVotes = [
         },
         message:"Voted 'Against' on",
     }
+];
+
+export const voteList = [
+    {
+        ...defaults,
+        name: "Legalizing Marijuana",
+    },
+    {
+        ...defaults,
+        name: "Reducing Covid Measures",
+        userVote: true
+    },
+    {
+        ...defaults,
+        name: "Basic Income",
+        userVote: true
+    },
+    {
+        ...defaults,
+        name: "Facilitating Immigration",
+    },
+    {
+        ...defaults,
+        name: "No Taxes for Independent Restaurants",
+    },
 ];

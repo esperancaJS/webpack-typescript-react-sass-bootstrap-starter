@@ -29,7 +29,7 @@ export const Notification: FunctionComponent<{ v: any }> = ({ v }) => {
                         </Link>
                         <div className="badge ml-1">Represents You</div>
                     </p>
-                    <p className="mb-0">{v.message} <Link to="/vote/equal%20rights"><b>{v.name}</b></Link></p>
+                    <p className="mb-0">{v.message} <Link to="/vote/equal%20rights"><b className="white">{v.name}</b></Link></p>
                     <small className="d-flex mb-2">3 days ago</small>
                     <div className="bar-wrapper" >
                         <VoteGraph1 key={`a-${v.name}`} {...v} name={null} />

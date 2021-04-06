@@ -1,8 +1,10 @@
 import * as React from "react";
+import { useHistory } from "react-router-dom";
 import numeral from 'numeral';
 
 export default function Chart({
     name,
+    showNameInside,
     forDirectCount,
     forCount,
     againstDirectCount,
@@ -11,7 +13,8 @@ export default function Chart({
     userDelegatedVotes = null
 }: {
     name: string | null,
-    forDirectCount: number
+    showNameInside?: boolean,
+    forDirectCount: number,
     forCount: number,
     againstDirectCount: number
     againstCount: number,
@@ -25,12 +28,11 @@ export default function Chart({
     ]
     | null;
 }) {
-    const navigateTo = (to: any) => {
-        alert(`TODO: navigate to ${to}`);
-    };
 
-    const voteOn = (vote: any) => {
-        alert(`TODO: vote on ${vote}`);
+    const history = useHistory();
+
+    const navigateTo = (to: any) => {
+        history.push(`/vote/${to}`);
     };
 
     const forPercentage = (forCount / (forCount + againstCount)) * 100 || 50;
@@ -140,7 +142,6 @@ export default function Chart({
                             y="20"
                             x="5"
                             className="svgText"
-                            onClick={() => voteOn("for")}
                         >
                             For
                         </text>
@@ -150,7 +151,6 @@ export default function Chart({
                             y="20"
                             x="5"
                             className="svgText"
-                            onClick={() => voteOn("against")}
                         >
                             Against
                         </text>
@@ -168,6 +168,19 @@ export default function Chart({
                 //   </text>
                 // </svg>
                 <></>
+            )}
+
+            {showNameInside && (
+                <svg x="0" y="0">
+                    <text
+                        y="20"
+                        x="5"
+                        className="svgText"
+                        onClick={() => navigateTo(name)}
+                    >
+                        {name}
+                    </text>
+                </svg>
             )}
 
             {/* Count texts */}

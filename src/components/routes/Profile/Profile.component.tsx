@@ -17,12 +17,8 @@ export default function Profile() {
 
     return (
         <>
-            <div className="top border-bottom">
-                <BackArrowSVG />
-                <div className="top-text-container">
-                    <div>Dan Price</div>
-                </div>
-            </div>
+            <Header title="Dan Price" />
+    
             <div className="profile-top">
                 <div className="cover" />
                 <div className="profile-avatar bg"></div>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="62.089mm" height="47.993mm" version="1.1" viewBox="0 0 62.089 47.993" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<svg width="43.064mm" height="47.589mm" version="1.1" viewBox="0 0 43.064 47.589" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
  <metadata>
   <rdf:RDF>
    <cc:Work rdf:about="">
@@ -9,9 +9,9 @@
    </cc:Work>
   </rdf:RDF>
  </metadata>
- <g transform="translate(-39.099 -6.683)">
+ <g transform="translate(-48.799 -6.683)">
   <g>
-   <ellipse cx="70.139" cy="47.19" rx="29.109" ry="5.5411" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.8898" style="paint-order:normal"/>
+   <path d="m86.656 43.918a19.929 5.5411 0 0 1-3.0761 7.3175 19.929 5.5411 0 0 1-26.497 0 19.929 5.5411 0 0 1-3.0761-7.3175" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2185" style="paint-order:normal"/>
    <path d="m70.303 12.839c6.3058 9.3725 10.343 15.899 10.343 21.553 0 5.6335-4.6388 10.215-10.343 10.215-5.7042 0-10.343-4.5819-10.343-10.214 0-5.6559 4.0355-12.182 10.343-21.555zm0-6.1558c-8.3951 12.406-13.791 20.167-13.791 27.711 0 7.5469 6.1696 13.661 13.791 13.661s13.791-6.1144 13.791-13.661c0-7.5435-5.3956-15.304-13.791-27.711z" stroke-width="1.724"/>
   </g>
  </g>

@@ -21,8 +21,8 @@ export default function App() {
                 <SideMenu />
                 <div className="App border-sides">
                     <Switch>
-                        <Route path="/vote/:voteName" component={loadable(() => import('./components/Routes/Vote_v1'))} />
-                        <Route path="/groupBy/:groupByType/:groupByName" component={loadable(() => import('./components/Routes/Vote_v1'))} />
+                        <Route path="/vote/:voteName" component={loadable(() => import('./components/routes/Vote'))} />
+                        <Route path="/group/:groupType/:groupFilter" component={loadable(() => import('./components/routes/Group'))} />
                         <Route path="/register" component={loadable(() => import('./components/Routes/CreateProfile'))} />
                         <Route path="/create-vote" component={loadable(() => import('./components/Routes/CreateVote'))} />
                         <Route path="/create-sub-vote/:voteName" component={loadable(() => import('./components/Routes/CreateVote'))} />

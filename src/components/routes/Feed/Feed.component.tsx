@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { Link } from "react-router-dom";
 
 import Header from "@shared/Header";
-import VoteGraph1 from "@shared/VoteGraph1";
 import { feedNotificationVotes } from "@state/Mock/Votes";
 
 import Notification from './Notification';

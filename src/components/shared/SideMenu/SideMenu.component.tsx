@@ -18,7 +18,7 @@ export const SideMenu: FunctionComponent<{}> = ({ }) => {
             <Link to="/vote/equal rights">
                 <RippleDrop />
             </Link>
-            <Link to="/feed">
+            <Link to="/group/your/representatives">
                 <HomeSvg />
             </Link>
             <Link to="/feed">
@@ -27,12 +27,12 @@ export const SideMenu: FunctionComponent<{}> = ({ }) => {
             <Link to="/profile">
                 <ProfileSvg />
             </Link>
-            <Link to="/feed">
+            {/* <Link to="/feed">
                 <BookmarkSvg />
             </Link>
             <Link to="/feed">
                 <AnalyticsSvg />
-            </Link>
+            </Link> */}
             <Link to="/create-vote" className="button_ inverted icon-contain">
                 <DropPlusSVG />
             </Link>

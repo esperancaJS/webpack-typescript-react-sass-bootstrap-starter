@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { DiscussionEmbed } from 'disqus-react';
 
 import VoteGraph1 from "@shared/VoteGraph1";
@@ -18,6 +18,8 @@ import {
 import SubVote from './SubVote';
 
 export default function Vote() {
+
+    let { voteName } = useParams<any>();
 
     const [userVote, setUserVote] = React.useState(null);
 
@@ -38,7 +40,7 @@ export default function Vote() {
             <Header title="Opinion Poll" />
 
             <h2 className="mb-0 mt-4">Do you approve of</h2>
-            <h2 className="mb-4"><b>Equal Rights</b></h2>
+            <h2 className="mb-4 white"><b>{voteName}</b></h2>
 
             <div>
                 {/* <h4 onClick={() => openStats("Vote")}>Opinions</h4> */}
@@ -70,17 +72,17 @@ export default function Vote() {
                 <div className="bar-container">
                     {byLocation.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
-                            <VoteGraph1 key={`a-${i}`} {...l} />
+                            <VoteGraph1 key={`a-${i}`} {...l} group="Location" />
                         </div>
                     ))}
                 </div>
 
                 <br />
-                <h4 onClick={() => openStats("Location")}>Age Groups</h4>
+                <h4 onClick={() => openStats("Age Groups")}>Age Groups</h4>
                 <div className="bar-container">
                     {byAge.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
-                            <VoteGraph1 key={`a-${i}`} {...l} />
+                            <VoteGraph1 key={`a-${i}`} {...l} group="Age Groups" />
                         </div>
                     ))}
                 </div>

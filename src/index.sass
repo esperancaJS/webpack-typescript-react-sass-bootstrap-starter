@@ -182,7 +182,7 @@ hr
         opacity: 0.7
         margin: 2px
 
-.bar-wrapper, .bar-wrapper-horizontal
+.bar-wrapper, .bar-wrapper-horizontal, .bar-wrapper-horizontal-small
     border-radius: 6px
     width: 100%
     overflow: hidden
@@ -195,6 +195,9 @@ hr
         &:hover
             max-height: 90px
             width: 100% !important
+
+    &.bar-wrapper-horizontal-small
+        max-height: 30px
 
     &:hover
         flex: 6 !important
@@ -225,7 +228,7 @@ hr
     display: flex
     width: 170px
     flex-direction: column
-    padding: 60px 0px 0 15px
+    padding: 0px 0px 0 15px
     margin-right: -50px
     font-size: 14px
     line-height: 15px
@@ -256,3 +259,6 @@ hr
         font-weight: bold
         font-size: 22px
         margin-left: 15px
+
+.white
+    color: white

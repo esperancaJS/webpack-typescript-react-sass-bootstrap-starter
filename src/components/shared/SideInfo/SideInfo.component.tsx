@@ -1,34 +1,45 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from "react-router-dom";
 
-import './style.sass';
+import {
+    voteList
+} from "@state/Mock/Votes";
 
-export const SideInfo: FunctionComponent<{}> = ({}) => {
+import './style.sass';
+import SideVote from "./SideVote";
+
+
+export const SideInfo: FunctionComponent<{}> = ({ }) => {
     return (
         <>
-          <div className="sideInfo">
-            <Link to="/vote/equal rights">
-                Trending
-            </Link>
-            <Link to="/vote/equal rights">
-                Trending Nearby
-            </Link>
-            <Link to="/vote/equal rights">
-                Trending among Representors
-            </Link>
-            <Link to="/vote/equal rights">
-                Trending among Following
-            </Link>
-            <Link to="/vote/equal rights">
-                Trending among Your Age Group
-            </Link>
-            <Link to="/vote/equal rights">
-                Trending among Your Occupation
-            </Link>
-            <Link to="/vote/equal rights">
-                Trending among People with similar Votes
-            </Link>
-        </div>
+            <div className="sideInfo">
+                <h3>Trending</h3>
+
+                {[
+                    { name: "From Nearby" },
+                    { name: "From Your Representative" },
+                    { name: "From Your Followers" },
+                    { name: "[Your Age Group]" },
+                    { name: "[Your Occupation]" },
+                    { name: "From People who also voted ['For'] on ['Wtv']" },
+                ].map(({ name }) => (
+                    <div className="sideInfoSection">
+
+                        <Link className="d-flex mb-3" to="/vote/equal rights">
+                            {name}
+                        </Link>
+
+                        <div className="bar-container-horizontal">
+                            {voteList.map((l, i) => (
+                                <SideVote
+                                    l={l}
+                                    i={i}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </>
     );
 }
