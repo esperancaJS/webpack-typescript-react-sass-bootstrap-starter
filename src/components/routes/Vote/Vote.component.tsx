@@ -7,6 +7,7 @@ import Header from "@shared/Header";
 import DropPlusSVG from "@shared/Icons/Drop+.svg";
 import {
     defaults,
+    byGroups,
     byLocation,
     byAge,
     byOccupation,
@@ -14,8 +15,7 @@ import {
     votesBy,
     onSubTopics
 } from "@state/Mock/Votes";
-
-import SubVote from './SubVote';
+import SubVote from '@shared/SubVote';
 
 export default function Vote() {
 
@@ -39,8 +39,8 @@ export default function Vote() {
         <>
             <Header title="Opinion Poll" />
 
-            <h2 className="mb-0 mt-4">Do you approve of</h2>
-            <h2 className="mb-4 white"><b>{voteName}</b></h2>
+            <h2 className="mb-0 mt-4">Do you approve</h2>
+            <h2 className="mb-4 white"><b>{voteName}</b>?</h2>
 
             <div>
                 {/* <h4 onClick={() => openStats("Vote")}>Opinions</h4> */}
@@ -65,12 +65,42 @@ export default function Vote() {
 
                 <hr />
 
-                <h2>Statistics</h2>
+                <h3>Votes by</h3>
+
+                <br />
+                <h5 onClick={() => openStats("Your Groups")}>Your Groups</h5>
+                <div className="bar-container">
+                    {byGroups.yourGroup.map((l, i) => (
+                        <div className="bar-wrapper" style={{ flex: l.flexSize }}>
+                            <VoteGraph1 key={`a-${i}`} {...l} group="YourGroup" />
+                        </div>
+                    ))}
+                </div>
+
+                <br />
+                <h4 onClick={() => openStats("Your Representatives")}>Your Representatives</h4>
+                <div className="bar-container">
+                    {byGroups.yourRepresentatives.map((l, i) => (
+                        <div className="bar-wrapper" style={{ flex: l.flexSize }}>
+                            <VoteGraph1 key={`a-${i}`} {...l} group="YourRepresentatives" />
+                        </div>
+                    ))}
+                </div>
+
+                <br />
+                <h4 onClick={() => openStats("People you Follow")}>People you Follow</h4>
+                <div className="bar-container">
+                    {byGroups.yourRepresentatives.map((l, i) => (
+                        <div className="bar-wrapper" style={{ flex: l.flexSize }}>
+                            <VoteGraph1 key={`a-${i}`} {...l} group="YourFollowees" />
+                        </div>
+                    ))}
+                </div>
 
                 <br />
                 <h4 onClick={() => openStats("Location")}>Locations</h4>
                 <div className="bar-container">
-                    {byLocation.map((l, i) => (
+                    {byGroups.location.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
                             <VoteGraph1 key={`a-${i}`} {...l} group="Location" />
                         </div>
@@ -80,7 +110,7 @@ export default function Vote() {
                 <br />
                 <h4 onClick={() => openStats("Age Groups")}>Age Groups</h4>
                 <div className="bar-container">
-                    {byAge.map((l, i) => (
+                    {byGroups.age.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
                             <VoteGraph1 key={`a-${i}`} {...l} group="Age Groups" />
                         </div>
@@ -90,7 +120,7 @@ export default function Vote() {
                 <br />
                 <h4 onClick={() => openStats("Location")}>Occupations</h4>
                 <div className="bar-container">
-                    {byOccupation.map((l, i) => (
+                    {byGroups.occupation.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
                             <VoteGraph1 key={`a-${i}`} {...l} />
                         </div>
@@ -102,7 +132,7 @@ export default function Vote() {
                     Correlations with other Votes
                 </h4>
                 <div className="bar-container">
-                    {byApprovalOnOtherTopics.map((l, i) => (
+                    {byGroups.approvalOnOtherTopics.map((l, i) => (
                         <div className="bar-wrapper" style={{ flex: l.flexSize }}>
                             <VoteGraph1 key={`b-${i}`} {...l} />
                         </div>
@@ -121,7 +151,7 @@ export default function Vote() {
 
                 <br />
                 <hr />
-                <h2>Votes on sub topics</h2>
+                <h3>Votes on sub topics</h3>
                 <div className="bar-container-horizontal">
                     {onSubTopics.map((l, i) => (
                         <SubVote
@@ -140,7 +170,7 @@ export default function Vote() {
             <br />
             <hr />
             <div>
-                <h2>Converstation</h2>
+                <h3>Converstation</h3>
 
                 <DiscussionEmbed
                     shortname='enronavoider'

@@ -38,10 +38,16 @@ export const VoteGraph1: FunctionComponent<{
 }) => {
         return (
             <>
-                {name && !showNameInside && (<Link to={`/${group ? ('group/' + group + '/') : 'vote/'}${name}`}><p
-                    className="mb-0 text-truncate"
-                    title={name}
-                >{name}{showQuestionMarkInName && '?'}</p></Link>)}
+                {name && !showNameInside && (
+                    <Link className="white" to={`/${group ? ('group/' + group + '/') : 'vote/'}${name}`}>
+                        <p
+                            className="mb-0 text-truncate"
+                            title={name}
+                        >
+                            {name}{showQuestionMarkInName && '?'}
+                        </p>
+                    </Link>
+                )}
                 <Chart
                     name={name}
                     showNameInside={showNameInside}

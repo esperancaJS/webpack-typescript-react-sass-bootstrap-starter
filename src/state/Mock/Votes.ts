@@ -9,176 +9,249 @@ export const defaults = {
     userDelegatedVotes: null
 };
 
-export const byLocation = [
-    {
-        ...defaults,
-        name: "Lisbon",
-        flexSize: 5,
-        forCount: 24550,
-        againstCount: 8440,
-    },
-    {
-        ...defaults,
-        name: "London",
-        flexSize: 4,
-        forCount: 10550,
-        againstCount: 1440,
-    },
-    {
-        ...defaults,
-        name: "Other",
-        // forPercentage: 50,
-        flexSize: 1,
-        forCount: 550,
-        againstCount: 940,
-    }
-];
-
-export const byAge = [
-    {
-        ...defaults,
-        name: "10-18",
-        flexSize: 3,
-        forCount: 7550,
-        againstCount: 1040,
-    },
-    {
-        ...defaults,
-        name: "19-25",
-        flexSize: 4,
-        forCount: 5550,
-        againstCount: 1440,
-    },
-    {
-        ...defaults,
-        name: "26-35",
-        // forPercentage: 70,
-        flexSize: 3,
-        forCount: 3550,
-        againstCount: 440,
-    },
-    {
-        ...defaults,
-        name: "36-50",
-        // forPercentage: 60,
-        flexSize: 3,
-        forCount: 1550,
-        againstCount: 2440,
-    },
-    {
-        ...defaults,
-        name: "Other",
-        // forPercentage: 50,
-        flexSize: 1,
-        forCount: 350,
-        againstCount: 540,
-    }
-];
-
-export const byOccupation = [
-    {
-        ...defaults,
-        name: "Student",
-        flexSize: 5,
-        // forPercentage: 90
-    },
-    {
-        ...defaults,
-        name: "Sales",
-        flexSize: 4,
-        // forPercentage: 50,
-        userVote: null
-    },
-    {
-        ...defaults,
-        name: "Doctor",
-        flexSize: 3,
-        // forPercentage: 70,
-        userVote: null
-    },
-    {
-        ...defaults,
-        name: "IT",
-        flexSize: 3,
-        // forPercentage: 90,
-        userVote: null
-    },
-    {
-        ...defaults,
-        name: "Lobbyist",
-        flexSize: 2,
-        // forPercentage: 20,
-        userVote: null
-    },
-    {
-        ...defaults,
-        name: "Other",
-        // forPercentage: 50,
-        flexSize: 1,
-        userVote: null
-    }
-];
-
-export const byApprovalOnOtherTopics = [
-    {
-        ...defaults,
-        name: "Equality",
-        flexSize: 7,
-        // forPercentage: 70,
-        // forPercentageOnOther: 90,
-        userVote: true
-    },
-    {
-        ...defaults,
-        name: "BLM",
-        flexSize: 5,
-        // forPercentage: 60,
-        // forPercentageOnOther: 50,
-        userVote: true
-    },
-    {
-        ...defaults,
-        name: "LGBT Rights",
-        // forPercentage: 90,
-        flexSize: 3,
-        // forPercentageOnOther: 40,
-        userVote: true
-    },
-    {
-        ...defaults,
-        name: "Other",
-        // forPercentage: 50,
-        flexSize: 1
-    }
-];
+export const byGroups = {
+    yourGroup: [
+        {
+            ...defaults,
+            name: "Work",
+            flexSize: 5,
+            forCount: 24550,
+            againstCount: 8440,
+        },
+        {
+            ...defaults,
+            name: "University",
+            flexSize: 4,
+            forCount: 10550,
+            againstCount: 1440,
+        },
+        {
+            ...defaults,
+            name: "Family",
+            // forPercentage: 50,
+            flexSize: 1,
+            forCount: 550,
+            againstCount: 940,
+        }
+    ],
+    yourRepresentatives: [
+        {
+            ...defaults,
+            name: "Joe Biden",
+            flexSize: 5,
+            forCount: 24550,
+            forDirectCount: 1,
+            againstCount: 0,
+            userVote: true,
+        },
+        {
+            ...defaults,
+            name: "Joe Rogan",
+            flexSize: 3,
+            againstCount: 8550,
+            againstDirectCount: 1,
+            forCount: 0,
+            userVote: true,
+        },
+        {
+            ...defaults,
+            name: "Bonno",
+            flexSize: 2,
+            forCount: 6550,
+            forDirectCount: 1,
+            againstCount: 0,
+            userVote: true,
+        },
+        {
+            ...defaults,
+            name: "Other",
+            // forPercentage: 50,
+            flexSize: 1,
+            forCount: 550,
+            againstCount: 940,
+            userVote: true,
+        }
+    ],
+    location: [
+        {
+            ...defaults,
+            name: "Lisbon",
+            flexSize: 5,
+            forCount: 24550,
+            againstCount: 8440,
+        },
+        {
+            ...defaults,
+            name: "London",
+            flexSize: 4,
+            forCount: 10550,
+            againstCount: 1440,
+        },
+        {
+            ...defaults,
+            name: "Other",
+            // forPercentage: 50,
+            flexSize: 1,
+            forCount: 550,
+            againstCount: 940,
+        }
+    ],
+    age: [
+        {
+            ...defaults,
+            name: "10-18",
+            flexSize: 3,
+            forCount: 7550,
+            againstCount: 1040,
+        },
+        {
+            ...defaults,
+            name: "19-25",
+            flexSize: 4,
+            forCount: 5550,
+            againstCount: 1440,
+        },
+        {
+            ...defaults,
+            name: "26-35",
+            // forPercentage: 70,
+            flexSize: 3,
+            forCount: 3550,
+            againstCount: 440,
+        },
+        {
+            ...defaults,
+            name: "36-50",
+            // forPercentage: 60,
+            flexSize: 3,
+            forCount: 1550,
+            againstCount: 2440,
+        },
+        {
+            ...defaults,
+            name: "Other",
+            // forPercentage: 50,
+            flexSize: 1,
+            forCount: 350,
+            againstCount: 540,
+        }
+    ],
+    occupation: [
+        {
+            ...defaults,
+            name: "Student",
+            flexSize: 5,
+            // forPercentage: 90
+        },
+        {
+            ...defaults,
+            name: "Sales",
+            flexSize: 4,
+            // forPercentage: 50,
+            userVote: null
+        },
+        {
+            ...defaults,
+            name: "Doctor",
+            flexSize: 3,
+            // forPercentage: 70,
+            userVote: null
+        },
+        {
+            ...defaults,
+            name: "IT",
+            flexSize: 3,
+            // forPercentage: 90,
+            userVote: null
+        },
+        {
+            ...defaults,
+            name: "Lobbyist",
+            flexSize: 2,
+            // forPercentage: 20,
+            userVote: null
+        },
+        {
+            ...defaults,
+            name: "Other",
+            // forPercentage: 50,
+            flexSize: 1,
+            userVote: null
+        }
+    ],
+    approvalOnOtherTopics: [
+        {
+            ...defaults,
+            name: "Equality",
+            flexSize: 7,
+            // forPercentage: 70,
+            // forPercentageOnOther: 90,
+            userVote: true
+        },
+        {
+            ...defaults,
+            name: "BLM",
+            flexSize: 5,
+            // forPercentage: 60,
+            // forPercentageOnOther: 50,
+            userVote: true
+        },
+        {
+            ...defaults,
+            name: "LGBT Rights",
+            // forPercentage: 90,
+            flexSize: 3,
+            // forPercentageOnOther: 40,
+            userVote: true
+        },
+        {
+            ...defaults,
+            name: "Other",
+            // forPercentage: 50,
+            flexSize: 1
+        }
+    ]
+};
 
 export const votesBy = [
     {
         ...defaults,
         name: "Direct",
-        // forPercentage: 70,
-        flexSize: 12,
+        forDirectCount: 6550,
+        forCount: 18550,
+        againstDirectCount: 2170,
+        againstCount: 6440,
+        flexSize: 6,
         userVote: null
     },
     {
         ...defaults,
         name: "Joe Bidden",
-        flexSize: 7,
-        // forPercentage: 100,
+        flexSize: 3,
+        forDirectCount: 0,
+        forCount: 8850,
+        againstDirectCount: 0,
+        againstCount: 0,
         userVote: null
     },
     {
         ...defaults,
         name: "Trump",
-        flexSize: 4,
-        // forPercentage: 0,
+        flexSize: 2,
+        forDirectCount: 0,
+        forCount: 0,
+        againstDirectCount: 0,
+        againstCount: 2840,
         userVote: null
     },
     {
         ...defaults,
         name: "Bonno",
-        // forPercentage: 100,
-        flexSize: 3,
+        forDirectCount: 0,
+        forCount: 750,
+        againstDirectCount: 0,
+        againstCount: 0,
+        flexSize: 1,
         userVote: null
     }
 ];
@@ -228,21 +301,24 @@ export const profileVotes = [
         ...defaults,
         name: "Equality",
         flexSize: 7,
-        forPercentage: 70
+        forPercentage: 70,
+        userVote: true
         // forPercentageOnOther: 90
     },
     {
         ...defaults,
         name: "BLM",
         flexSize: 5,
-        forPercentage: 60
+        forPercentage: 60,
+        userVote: true
         // forPercentageOnOther: 50
     },
     {
         ...defaults,
         name: "LGBT Rights",
         forPercentage: 90,
-        flexSize: 3
+        flexSize: 3,
+        userVote: true
         // forPercentageOnOther: 40
     },
     {
@@ -270,7 +346,7 @@ export const feedNotificationVotes = [
             avatar: '',
             representsYou: true
         },
-        message:"Voted 'For' on",
+        message: "Voted 'For' on",
         name: "Equality",
     },
     {
@@ -283,7 +359,7 @@ export const feedNotificationVotes = [
             avatar: '',
             representsYou: false
         },
-        message:"Launched Opinion Poll and Voted 'For' on",
+        message: "Launched Opinion Poll and Voted 'For' on",
     },
     {
         ...defaults,
@@ -296,7 +372,7 @@ export const feedNotificationVotes = [
             avatar: '',
             representsYou: true
         },
-        message:"Voted 'For' on",
+        message: "Voted 'For' on",
     },
     {
         ...defaults,
@@ -308,7 +384,7 @@ export const feedNotificationVotes = [
             avatar: '',
             representsYou: false
         },
-        message:"Voted 'Against' on",
+        message: "Voted 'Against' on",
     },
     {
         ...defaults,
@@ -319,7 +395,7 @@ export const feedNotificationVotes = [
             avatar: '',
             representsYou: true
         },
-        message:"Voted 'Against' on",
+        message: "Voted 'Against' on",
     }
 ];
 

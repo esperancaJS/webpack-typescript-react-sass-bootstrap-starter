@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from "react-router-dom";
 
-import VoteGraph1 from "@shared/VoteGraph1";
+import VoteWrapper from "@shared/VoteWrapper";
 import './style.sass';
 
 export const Notification: FunctionComponent<{ v: any }> = ({ v }) => {
@@ -31,25 +31,10 @@ export const Notification: FunctionComponent<{ v: any }> = ({ v }) => {
                     </p>
                     <p className="mb-0">{v.message} <Link to="/vote/equal%20rights"><b className="white">{v.name}</b></Link></p>
                     <small className="d-flex mb-2">3 days ago</small>
-                    <div className="bar-wrapper" >
-                        <VoteGraph1 key={`a-${v.name}`} {...v} name={null} />
-                    </div>
-
-                    <div className="d-flex d-flex justify-content-between mt-4">
-                        <div
-                            onClick={() => handleUserVote('for')}
-                            className={`button_ ${userVote === 'for' && 'selected'}`}
-                        >
-                            Vote For
-                        </div>
-                        <div
-                            onClick={() => handleUserVote('against')}
-                            className={`button_ ${userVote === 'against' && 'selected'}`}
-                        >
-                            Vote Against
-                        </div>
-                    </div>
                 </div>
+            </div>
+            <div>
+                <VoteWrapper l={{...v, name: ''}} />
             </div>
             <hr />
         </>

@@ -7,7 +7,7 @@ import DropPlusSVG from "@shared/Icons/Drop+.svg";
 import NotificationSvg from "@shared/Icons/Notification.svg";
 import ProfileSvg from "@shared/Icons/Profile.svg";
 import ProfilePlusSvg from "@shared/Icons/Profile+.svg";
-import BookmarkSvg from "@shared/Icons/Bookmark.svg";
+import TrendingSvg from "@shared/Icons/Trending.svg";
 import AnalyticsSvg from "@shared/Icons/Analytics.svg";
 
 import './style.sass';
@@ -15,7 +15,7 @@ import './style.sass';
 export const SideMenu: FunctionComponent<{}> = ({ }) => {
     return (
         <div className="sideMenu">
-            <Link to="/vote/equal rights">
+            <Link to="/home">
                 <RippleDrop />
             </Link>
             <Link to="/group/your/representatives">
@@ -26,6 +26,9 @@ export const SideMenu: FunctionComponent<{}> = ({ }) => {
             </Link>
             <Link to="/profile">
                 <ProfileSvg />
+            </Link>
+            <Link to="/trending" className="d-block d-md-none">
+                <TrendingSvg />
             </Link>
             {/* <Link to="/feed">
                 <BookmarkSvg />

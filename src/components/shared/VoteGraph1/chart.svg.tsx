@@ -35,7 +35,7 @@ export default function Chart({
         history.push(`/vote/${to}`);
     };
 
-    const forPercentage = (forCount / (forCount + againstCount)) * 100 || 50;
+    const forPercentage = (!forCount && !againstCount) ? 50 : (forCount / (forCount + againstCount)) * 100;
     const forDirectPercentage = (forDirectCount / (forCount + againstCount)) * 100 || 50;
     const againstPercentage = 100 - forPercentage;
     const againstDirectPercentage = (againstDirectCount / (forCount + againstCount)) * 100 || 50;

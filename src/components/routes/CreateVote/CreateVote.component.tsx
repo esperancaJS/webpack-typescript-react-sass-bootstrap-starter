@@ -10,8 +10,8 @@ import VoteGraph1 from "@shared/VoteGraph1";
 import "./style.sass";
 
 const startTextOptions = [
-    "approve of",
-    "believe in",
+    "approve",
+    "believe",
     "like",
     "want"
 ];

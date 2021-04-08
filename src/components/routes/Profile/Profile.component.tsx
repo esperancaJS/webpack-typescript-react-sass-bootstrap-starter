@@ -9,6 +9,7 @@ import DropSVG from "@shared/Icons/Drop.svg";
 import Header from "@shared/Header";
 import VoteGraph1 from "@shared/VoteGraph1";
 import { profileVotes } from "@state/Mock/Votes";
+import VoteWrapper from "@shared/VoteWrapper";
 
 import './style.sass';
 
@@ -31,9 +32,6 @@ export default function Profile() {
                         className={`button_ ${isRepresenting ? "selected" : ""}`}
                     >
                         {isRepresenting ? "Represents You" : "Delegate Votes To"}
-                        <span className="ml-2 mr-1 mt-n2"> 
-                            <DropSVG />
-                        </span>
                     </div>
                 </div>
             </div>
@@ -80,14 +78,7 @@ export default function Profile() {
 
             <div>
                 {profileVotes.map((l, i) => (
-                    <>
-                        <br />
-                        <div className="bar-container">
-                            <div className="bar-wrapper" style={{ flex: l.flexSize }}>
-                                <VoteGraph1 key={`b-${i}`} {...l} />
-                            </div>
-                        </div>
-                    </>
+                    <VoteWrapper l={l} />
                 ))}
             </div>
         </>

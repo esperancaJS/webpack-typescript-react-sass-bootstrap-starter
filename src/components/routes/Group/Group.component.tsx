@@ -6,6 +6,7 @@ import './style.sass';
 import Header from "@shared/Header";
 import { voteList } from "@state/Mock/Votes";
 import VoteGraph1 from "@shared/VoteGraph1";
+import VoteWrapper from "@shared/VoteWrapper";
 
 const groups = {
     "your": ["representatives", "followers"],
@@ -20,7 +21,7 @@ export const Group: FunctionComponent<{}> = ({ }) => {
 
     return (
         <>
-            <Header title="Group" />
+            <Header title="Grouping By:" />
 
             <div className="d-flex justify-content-between align-items-center mt-3">
                 <h3 className="m-0">
@@ -37,14 +38,7 @@ export const Group: FunctionComponent<{}> = ({ }) => {
 
             <div className="bar-container-horizontal">
                 {voteList.map((l, i) => (
-                    <>
-                        <br />
-                        <div className="bar-container">
-                            <div className="bar-wrapper" style={{ flex: l.flexSize }}>
-                                <VoteGraph1 key={`b-${i}`} {...l} />
-                            </div>
-                        </div>
-                    </>
+                    <VoteWrapper l={l} />
                 ))}
             </div>
         </>
