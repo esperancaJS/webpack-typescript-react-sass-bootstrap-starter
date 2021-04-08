@@ -48,6 +48,21 @@ export default function Vote() {
                     <VoteGraph1 {...defaults} />
                 </div>
 
+                <div className="d-flex color-legend mt-2 mb-n2">
+                    <div>
+                        <small>Direct For</small><div className="color forDirect"></div>
+                    </div>
+                    <div>
+                        <small>Delegated For</small><div className="color for"></div>
+                    </div>
+                    <div>
+                        <small>Direct Against</small><div className="color againstDirect"></div>
+                    </div>
+                    <div>
+                        <small>Delegated Against</small><div className="color against"></div>
+                    </div>
+                </div>
+
                 <div className="d-flex d-flex justify-content-between mt-4">
                     <div
                         onClick={() => handleUserVote('for')}

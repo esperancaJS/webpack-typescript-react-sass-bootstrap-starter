@@ -53,6 +53,7 @@ export const Home: FunctionComponent<{}> = ({ }) => {
                     // i={0}
                     showIntroMessage={true}
                     introMessage="Do you Believe"
+                    showColorLegend={true}
                 />
             </div>
         </>

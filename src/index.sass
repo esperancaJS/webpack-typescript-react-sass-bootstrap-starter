@@ -34,15 +34,24 @@ $theme5-colors: ("bg": #0b414d, "primary": #08f3a5, "secondary": white, "border"
 
     .for
         fill: adjust-color(map-get($theme, "for"), $alpha: -0.2)
+        background: adjust-color(map-get($theme, "for"), $alpha: -0.2)
+        color: adjust-color(map-get($theme, "for"), $alpha: -0.2)
 
     .forDirect
         fill: map-get($theme, "for")
+        background: map-get($theme, "for")
+        color: map-get($theme, "for")
 
     .against
         fill: adjust-color(map-get($theme, "against"), $alpha: -0.2)
+        background: adjust-color(map-get($theme, "against"), $alpha: -0.2)
+        color: adjust-color(map-get($theme, "against"), $alpha: -0.2)
 
     .againstDirect
         fill: map-get($theme, "against")
+        background: map-get($theme, "against")
+        color: map-get($theme, "against")
+
 
     .icon, .icon-large, .icon-small
         *
@@ -266,3 +275,18 @@ hr
     &:hover
         color: white
         
+.color-legend
+    justify-content: space-around
+    margin-bottom: 15px
+    margin-top: -10px
+
+    > div
+        display: flex
+        flex-direction: row
+        align-items: center
+
+    .color
+        margin-left: 5px
+        width: 20px
+        height: 10px
+        border-radius: 6px

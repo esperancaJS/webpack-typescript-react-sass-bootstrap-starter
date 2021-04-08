@@ -10,7 +10,7 @@ import './style.sass';
 export const Feed: FunctionComponent<{}> = ({ }) => {
     return (
         <>
-            <Header title="Your Feed" />
+            <Header title="Notifications" />
 
             <br />
 
