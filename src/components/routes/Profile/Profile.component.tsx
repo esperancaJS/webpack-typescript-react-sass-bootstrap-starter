@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link, useParams } from "react-router-dom";
 
 import BackArrowSVG from "@shared/Icons/BackArrow.svg";
 import LinkSVG from "@shared/Icons/Link.svg";
@@ -64,12 +65,12 @@ export default function Profile() {
                 </div>
             </div>
             <div className="profile-stats-container">
-                <div>
+                <Link to="/profile-people/representing">
                     <b>1,063</b> Representing Dan
-                </div>
-                <div>
+                </Link>
+                <Link to="/profile-people/represented" className="ml-2">
                     <b>229.1K</b> Represented by Dan
-                </div>
+                </Link>
             </div>
 
             <hr />

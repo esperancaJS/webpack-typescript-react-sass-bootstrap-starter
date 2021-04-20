@@ -17,7 +17,7 @@ export const SideVote: FunctionComponent<{i: number, l: any }> = ({ i, l }) => {
     return (
         <>
             <div className="bar-wrapper-horizontal-small mb-2" style={{ width: 100 - i * 10 + '%' }}>
-                <VoteGraph1 key={`d-${i}`} {...l} showNameInside={true} />
+                <VoteGraph1 key={`d-${i}`} {...l} showNameInside={false} />
             </div>
 
             {/* <div className="d-flex d-flex justify-content-between mt-n2">

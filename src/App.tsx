@@ -24,14 +24,17 @@ export default function App() {
                 <div className="App border-sides">
                     <Switch>
                         <Route path="/vote/:voteName" component={loadable(() => import('./components/routes/Vote'))} />
-                        <Route path="/group/:groupType/:groupFilter" component={loadable(() => import('./components/routes/Group'))} />
+                        <Route path="/grouping/:groupType/:groupFilter" component={loadable(() => import('./components/routes/Grouping'))} />
                         <Route path="/register" component={loadable(() => import('./components/Routes/CreateProfile'))} />
                         <Route path="/create-vote" component={loadable(() => import('./components/Routes/CreateVote'))} />
                         <Route path="/create-sub-vote/:voteName" component={loadable(() => import('./components/Routes/CreateVote'))} />
                         <Route path="/profile" component={loadable(() => import('./components/Routes/Profile'))} />
+                        <Route path="/profile-people/:which" component={loadable(() => import('./components/Routes/ProfilePeople'))} />
                         <Route path="/trending" component={loadable(() => import('./components/Routes/Trending'))} />
                         <Route path="/feed" component={loadable(() => import('./components/Routes/Feed'))} />
                         <Route path="/home" component={loadable(() => import('./components/Routes/Home'))} />
+                        <Route path="/groups" component={loadable(() => import('./components/Routes/Groups'))} />
+                        <Route path="/group/:groupName/:section" component={loadable(() => import('./components/Routes/Group'))} />
                         <Redirect from="/" to="/home" />
                     </Switch>
                 </div>

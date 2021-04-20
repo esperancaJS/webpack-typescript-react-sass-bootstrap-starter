@@ -16,7 +16,7 @@ export const SubVote: FunctionComponent<{ i: number, l: any, introMessage?: stri
 
     return (
         <>
-            <small className="do-you mb-n2">{introMessage || 'Do you approve'}</small>
+            {/* <small className="do-you mb-n2">{introMessage || 'Do you approve'}</small> */}
             <div className="bar-wrapper-horizontal mb-3" style={{ width: 100 - i * 10 + '%' }}>
                 <VoteGraph1 key={`d-${i}`} {...l} showQuestionMarkInName={true} />
             </div>

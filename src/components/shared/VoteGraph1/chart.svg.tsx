@@ -106,7 +106,7 @@ export default function Chart({
             )} */}
 
             {/* Avatars */}
-            {userVote !== null && (
+            {/* {userVote !== null && (
                 <>
                     {userVote ? (
                         <svg x="0" y="0">
@@ -132,10 +132,10 @@ export default function Chart({
                         </svg>
                     )}
                 </>
-            )}
+            )} */}
 
             {/* Top Left Texts */}
-            {name === null ? (
+            {/* {name === null ? (
                 <>
                     <svg x="0" y="0">
                         <text
@@ -168,7 +168,7 @@ export default function Chart({
                 //   </text>
                 // </svg>
                 <></>
-            )}
+            )} */}
 
             {showNameInside && (
                 <svg x="0" y="0">
@@ -184,7 +184,7 @@ export default function Chart({
             )}
 
             {/* Count texts */}
-            <svg
+            {/* <svg
                 x={forPercentage + "%"}
                 y="60%"
                 style={{ overflow: 'visible' }}
@@ -227,7 +227,7 @@ export default function Chart({
                 >
                     {numeral(againstDirectCount).format('0a')}
                 </text>
-            </svg>
+            </svg> */}
         </svg>
     );
 }

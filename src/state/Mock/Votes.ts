@@ -259,7 +259,7 @@ export const votesBy = [
 export const onSubTopics = [
     {
         ...defaults,
-        name: "Equal Rights amoung Genders",
+        subname: "amoung Genders",
         flexSize: 8,
         // forPercentage: 90,
         // forPercentageOnOther: 70,
@@ -267,21 +267,21 @@ export const onSubTopics = [
     },
     {
         ...defaults,
-        name: "Equal Rights accross all Ages",
+        subname: "accross all Ages",
         flexSize: 4,
         // forPercentage: 60,
         // forPercentageOnOther: 50,
     },
     {
         ...defaults,
-        name: "Equal Rights for rapists",
+        subname: "for rapists",
         flexSize: 4,
         // forPercentage: 60,
         // forPercentageOnOther: 50,
     },
     {
         ...defaults,
-        name: "Equal Rights including demoniac ones",
+        subname: "including demoniac ones",
         flexSize: 4,
         // forPercentage: 60,
         // forPercentageOnOther: 50,
@@ -289,7 +289,7 @@ export const onSubTopics = [
     },
     {
         ...defaults,
-        name: "Equal Rights excluding demoniac ones",
+        subname: "excluding demoniac ones",
         flexSize: 4,
         // forPercentage: 60,
         // forPercentageOnOther: 50,

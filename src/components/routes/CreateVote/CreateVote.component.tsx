@@ -26,7 +26,7 @@ const textJoinOptions = [
 
 export default function CreateVote() {
 
-    let { voteName } = useParams();
+    let { voteName } = useParams<any>();
 
     const { handleSubmit, register, setValue, watch } = useForm({
         mode: "onChange",
